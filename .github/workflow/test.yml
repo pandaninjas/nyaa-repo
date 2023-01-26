@@ -1,0 +1,14 @@
+name: CI
+on:
+  push:
+    branches: *
+jobs:
+  fuzz:
+    runs-on: ubuntu-latest
+    container: kreato/builder:latest
+    steps:
+      - name: Clone repo
+        run: git clone https://github.com/${{ github.repository }} && cd ${{ github.event.repository.name }} && git checkout ${{ github.ref_name }}
+      
+      - name: Run test
+        run: chmod +x ./build-everything.sh && ./build-everything.sh  
