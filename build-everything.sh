@@ -11,12 +11,6 @@ do
     if [ -d "$i" ] && [ "$i" != "$EXCLUDE_PACKAGE" ] && [ "$i" != "$EXCLUDE_PACKAGE1" ]
     then
         . "$i/run"
-        if [ ! -f "/etc/nyaa.tarballs/nyaa-tarball-$i-$VERSION.tar.gz" ]
-        then
-            echo "now building $i"
-            nyaa b $i -y
-            echo "$i" >> new.txt
-        fi
     fi
 done
 echo "The tarballs are now located in /etc/nyaa.tarballs"
