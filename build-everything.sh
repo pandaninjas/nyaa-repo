@@ -4,6 +4,18 @@
 EXCLUDE_PACKAGE="gcc"
 EXCLUDE_PACKAGE1="kreainit"
 
+cat >/etc/myconfig.conf <<EOL
+[Options]
+cc=gcc
+[Repositories]
+RepoDirs=$(realpath .)
+RepoLinks="https://github.com/kreatolinux/nyaa-repo.git https://github.com/kreatolinux/nyaa-repo-bin.git"
+[Upgrade]
+buildByDefault=yes
+EOL
+
+cat /etc/myconfig.conf
+
 [ "$(id -u)" != "0" ] && exit 1
 [ -f "new.txt" ] && rm -f new.txt
 for i in *
@@ -14,7 +26,7 @@ do
         if [ ! -f "/etc/nyaa.tarballs/nyaa-tarball-$i-$VERSION.tar.gz" ]
         then
             echo "now building $i"
-            nyaa b $i -y
+            nyaa build $i
             echo "$i" >> new.txt
         fi
     fi
