@@ -26,7 +26,7 @@ do
         if [ ! -f "/etc/nyaa.tarballs/nyaa-tarball-$i-$VERSION.tar.gz" ]
         then
             echo "now building $i"
-            nyaa build $i
+            nyaa build -y
             echo "$i" >> new.txt
         fi
     fi
