@@ -4,7 +4,7 @@
 EXCLUDE_PACKAGE="gcc"
 EXCLUDE_PACKAGE1="kreainit"
 
-cat >/etc/myconfig.conf <<EOL
+cat >/etc/nyaa.conf <<EOL
 [Options]
 cc=gcc
 [Repositories]
