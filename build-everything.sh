@@ -41,3 +41,5 @@ done
 echo "The tarballs are now located in /etc/nyaa.tarballs"
 echo "New packages that are compiled;"
 echo "$(cat new.txt)"
+echo "These packages failed to compile"
+echo "$(cat failed.txt)"
