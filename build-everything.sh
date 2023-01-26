@@ -33,7 +33,8 @@ do
                 echo "$i" >> new.txt
             else
                 echo "$i" >> failed.txt
-            rm /tmp/nyaa.lock
+            fi
+            [ -f "/tmp/nyaa.lock" ] && rm -f /tmp/nyaa.lock
         fi
     fi
 done
