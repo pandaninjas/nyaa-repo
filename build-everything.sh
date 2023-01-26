@@ -4,6 +4,8 @@
 EXCLUDE_PACKAGE="gcc"
 EXCLUDE_PACKAGE1="kreainit"
 
+nyaa update
+
 cat >/etc/nyaa.conf <<EOL
 [Options]
 cc=gcc
