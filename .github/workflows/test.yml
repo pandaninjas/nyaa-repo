@@ -5,8 +5,5 @@ jobs:
     runs-on: ubuntu-latest
     container: kreato/builder:latest
     steps:
-      - name: Clone repo
-        run: git clone https://github.com/${{ github.repository }} && cd ${{ github.event.repository.name }} && git checkout ${{ github.ref_name }}
-      
-      - name: Run test
-        run: chmod +x ./build-everything.sh && ./build-everything.sh  
+      - name: Do all the things
+        run: git clone https://github.com/${{ github.repository }} && cd ${{ github.event.repository.name }} && git checkout ${{ github.ref_name }} && chmod +x ./build-everything.sh && ./build-everything.sh  
