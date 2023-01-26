@@ -18,6 +18,7 @@ EOL
 
 [ "$(id -u)" != "0" ] && exit 1
 [ -f "new.txt" ] && rm -f new.txt
+[ -f "failed.txt" ] && rm -f failed.txt
 for i in *
 do
     if [ -d "$i" ] && [ "$i" != "$EXCLUDE_PACKAGE" ] && [ "$i" != "$EXCLUDE_PACKAGE1" ]
@@ -27,7 +28,12 @@ do
         then
             echo "now building $i"
             nyaa build -y $i
-            echo "$i" >> new.txt
+            if [ $? -eq 0 ]
+            then
+                echo "$i" >> new.txt
+            else
+                echo "$i" >> failed.txt
+            rm /tmp/nyaa.lock
         fi
     fi
 done
