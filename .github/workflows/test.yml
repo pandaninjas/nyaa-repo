@@ -3,7 +3,6 @@ on: [push]
 jobs:
   fuzz:
     runs-on: ubuntu-latest
-    container: kreato/builder:latest
     steps:
       - name: Do all the things
-        run: git clone https://github.com/${{ github.repository }} && cd ${{ github.event.repository.name }} && git checkout ${{ github.ref_name }} && chmod +x ./build-everything.sh && ./build-everything.sh  
+        run: wget https://nightly.link/kreatolinux/nyaa3/workflows/build-rootfs/master/builder-rootfs.zip && mkdir kreato && unzip builder-rootfs.zip -d kreato && sudo chroot kreato && git clone https://github.com/${{ github.repository }} && cd ${{ github.event.repository.name }} && git checkout ${{ github.ref_name }} && chmod +x ./build-everything.sh && ./build-everything.sh  
