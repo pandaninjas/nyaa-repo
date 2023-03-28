@@ -13,7 +13,7 @@ build() {
     sed '/sys\/mount\.h/d' -i src/util.h
     sed '/unistd\.h/a#include <sys/mount.h>' -i src/gpt.c src/linux.c
     
-    make CFLAGS="-O2 -Wno-stringop-truncation"
+    make -j$(nproc) CFLAGS="-O2 -Wno-stringop-truncation"
 }
 
 install() {
