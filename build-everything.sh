@@ -4,9 +4,9 @@
 EXCLUDE_PACKAGE="gcc"
 EXCLUDE_PACKAGE1="kreainit"
 
-nyaa update
+kpkg update
 
-cat >/etc/nyaa.conf <<EOL
+cat >/etc/kpkg.conf <<EOL
 [Options]
 cc=gcc
 [Repositories]
@@ -26,19 +26,19 @@ do
         if [ ! -f "/etc/nyaa.tarballs/nyaa-tarball-$i-$VERSION.tar.gz" ]
         then
             echo "now building $i"
-            nyaa build -y $i > /dev/null
+            kpkg build -y $i > /dev/null
             if [ $? -eq 0 ]
             then
                 echo "$i" >> new.txt
             else
                 echo "$i" >> failed.txt
             fi
-            [ -f "/tmp/nyaa.lock" ] && rm -f /tmp/nyaa.lock
+            [ -f "/tmp/kpkg.lock" ] && rm -f /tmp/kpkg.lock
         fi
     fi
 done
 echo "The tarballs are now located in /etc/nyaa.tarballs"
 echo "New packages that are compiled;"
-echo "$(cat new.txt)"
+cat new.txt
 echo "These packages failed to compile"
-echo "$(cat failed.txt)"
+cat failed.txt
